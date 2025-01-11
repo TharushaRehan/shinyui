@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "npm build:registry",
+    "prebuild": "npm run build:registry",
     "build": "next build",
     "build:registry": "tsx --tsconfig  ./tsconfig.scripts.json ./scripts/build-registry.ts",
     "build:content": "contentlayer2 build",
