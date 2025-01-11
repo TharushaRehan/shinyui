@@ -1,0 +1,10 @@
+{
+  "name": "number-ticker-demo",
+  "files": [
+    {
+      "name": "number-ticker-demo.tsx",
+      "content": "import NumberTicker from \"@/components/shinyui/number-ticker\";\r\n\r\nconst NumberTickerDemo = () => {\r\n  return (\r\n    <p className=\"whitespace-pre-wrap text-8xl font-medium tracking-tighter text-black dark:text-white\">\r\n      <NumberTicker value={100} />\r\n    </p>\r\n  );\r\n};\r\n\r\nexport default NumberTickerDemo;\r\n"
+    }
+  ],
+  "type": "components:example"
+}

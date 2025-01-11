@@ -1,0 +1,10 @@
+{
+  "name": "word-fade-in",
+  "files": [
+    {
+      "name": "word-fade-in.tsx",
+      "content": "\"use client\";\r\n\r\nimport { motion, Variants } from \"framer-motion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface WordFadeInProps {\r\n  words: string;\r\n  className?: string;\r\n  delay?: number;\r\n  variants?: Variants;\r\n}\r\n\r\nexport default function WordFadeIn({\r\n  words,\r\n  delay = 0.15,\r\n  variants = {\r\n    hidden: { opacity: 0 },\r\n    visible: (i: any) => ({\r\n      y: 0,\r\n      opacity: 1,\r\n      transition: { delay: i * delay },\r\n    }),\r\n  },\r\n  className,\r\n}: WordFadeInProps) {\r\n  const _words = words.split(\" \");\r\n\r\n  return (\r\n    <motion.h1\r\n      variants={variants}\r\n      initial=\"hidden\"\r\n      animate=\"visible\"\r\n      className={cn(\r\n        \"font-display text-center text-4xl font-bold tracking-[-0.02em] text-black drop-shadow-sm dark:text-white md:text-7xl md:leading-[5rem]\",\r\n        className\r\n      )}\r\n    >\r\n      {_words.map((word, i) => (\r\n        <motion.span key={word} variants={variants} custom={i}>\r\n          {word}{\" \"}\r\n        </motion.span>\r\n      ))}\r\n    </motion.h1>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "type": "components:shinyui"
+}

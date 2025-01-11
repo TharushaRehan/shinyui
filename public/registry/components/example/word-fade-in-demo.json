@@ -1,0 +1,10 @@
+{
+  "name": "word-fade-in-demo",
+  "files": [
+    {
+      "name": "word-fade-in-demo.tsx",
+      "content": "import WordFadeIn from \"@/components/shinyui/word-fade-in\";\r\n\r\nexport default function WordFadeInDemo() {\r\n  return <WordFadeIn words=\"Word Fade In\" />;\r\n}\r\n"
+    }
+  ],
+  "type": "components:example"
+}

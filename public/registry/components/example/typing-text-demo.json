@@ -1,0 +1,10 @@
+{
+  "name": "typing-text-demo",
+  "files": [
+    {
+      "name": "typing-text-demo.tsx",
+      "content": "import TypingText from \"@/components/shinyui/typing-text\";\r\n\r\nexport default function TypingTextDemo() {\r\n  return (\r\n    <TypingText\r\n      className=\"text-4xl font-bold text-black dark:text-white\"\r\n      text=\"Typing Animation\"\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "type": "components:example"
+}

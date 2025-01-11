@@ -1,0 +1,10 @@
+{
+  "name": "number-ticker",
+  "files": [
+    {
+      "name": "number-ticker.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useEffect, useRef } from \"react\";\r\nimport { useInView, useMotionValue, useSpring } from \"framer-motion\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport default function NumberTicker({\r\n  value,\r\n  direction = \"up\",\r\n  delay = 0,\r\n  className,\r\n}: {\r\n  value: number;\r\n  direction?: \"up\" | \"down\";\r\n  className?: string;\r\n  delay?: number; // delay in s\r\n}) {\r\n  const ref = useRef<HTMLSpanElement>(null);\r\n  const motionValue = useMotionValue(direction === \"down\" ? value : 0);\r\n  const springValue = useSpring(motionValue, {\r\n    damping: 60,\r\n    stiffness: 100,\r\n  });\r\n  const isInView = useInView(ref, { once: true, margin: \"0px\" });\r\n\r\n  useEffect(() => {\r\n    isInView &&\r\n      setTimeout(() => {\r\n        motionValue.set(direction === \"down\" ? 0 : value);\r\n      }, delay * 1000);\r\n  }, [motionValue, isInView, delay, value, direction]);\r\n\r\n  useEffect(\r\n    () =>\r\n      springValue.on(\"change\", (latest) => {\r\n        if (ref.current) {\r\n          ref.current.textContent = Intl.NumberFormat(\"en-US\").format(\r\n            Number(latest.toFixed(0))\r\n          );\r\n        }\r\n      }),\r\n    [springValue]\r\n  );\r\n\r\n  return (\r\n    <span\r\n      className={cn(\r\n        \"inline-block tabular-nums text-black dark:text-white tracking-wider\",\r\n        className\r\n      )}\r\n      ref={ref}\r\n    />\r\n  );\r\n}\r\n"
+    }
+  ],
+  "type": "components:shinyui"
+}

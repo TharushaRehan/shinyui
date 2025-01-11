@@ -1,0 +1,10 @@
+{
+  "name": "typing-text",
+  "files": [
+    {
+      "name": "typing-text.tsx",
+      "content": "\"use client\";\r\n\r\nimport { useEffect, useState } from \"react\";\r\n\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface TypingTextProps {\r\n  text: string;\r\n  className?: string;\r\n}\r\n\r\nexport default function TypingText({ text, className }: TypingTextProps) {\r\n  const [displayedText, setDisplayedText] = useState<string>(\"\");\r\n  const [i, setI] = useState<number>(0);\r\n\r\n  useEffect(() => {\r\n    const typingEffect = setInterval(() => {\r\n      if (i < text.length) {\r\n        setDisplayedText(text.substring(0, i + 1));\r\n        setI(i + 1);\r\n      } else {\r\n        clearInterval(typingEffect);\r\n      }\r\n    }, 100);\r\n\r\n    return () => {\r\n      clearInterval(typingEffect);\r\n    };\r\n  }, [i]);\r\n\r\n  return (\r\n    <p\r\n      className={cn(\r\n        \"font-display text-center text-4xl font-bold leading-[5rem] tracking-[-0.02em] drop-shadow-sm\",\r\n        className\r\n      )}\r\n    >\r\n      {displayedText ? displayedText : text}\r\n    </p>\r\n  );\r\n}\r\n"
+    }
+  ],
+  "type": "components:shinyui"
+}

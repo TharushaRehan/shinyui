@@ -1,0 +1,58 @@
+[
+  {
+    "name": "marquee",
+    "files": [
+      "registry/components/shinyui/marquee.tsx"
+    ],
+    "type": "components:shinyui"
+  },
+  {
+    "name": "marquee-demo",
+    "files": [
+      "registry/components/example/marquee-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "number-ticker",
+    "files": [
+      "registry/components/shinyui/number-ticker.tsx"
+    ],
+    "type": "components:shinyui"
+  },
+  {
+    "name": "number-ticker-demo",
+    "files": [
+      "registry/components/example/number-ticker-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "typing-text",
+    "files": [
+      "registry/components/shinyui/typing-text.tsx"
+    ],
+    "type": "components:shinyui"
+  },
+  {
+    "name": "typing-text-demo",
+    "files": [
+      "registry/components/example/typing-text-demo.tsx"
+    ],
+    "type": "components:example"
+  },
+  {
+    "name": "word-fade-in",
+    "files": [
+      "registry/components/shinyui/word-fade-in.tsx"
+    ],
+    "type": "components:shinyui"
+  },
+  {
+    "name": "word-fade-in-demo",
+    "files": [
+      "registry/components/example/word-fade-in-demo.tsx"
+    ],
+    "type": "components:example"
+  }
+]
