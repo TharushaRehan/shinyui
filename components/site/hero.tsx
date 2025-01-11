@@ -35,8 +35,8 @@ export const technologies = [
   },
 ];
 
-const MotionBoltIcon = motion(BoltIcon);
-const MotionLink = motion(Link);
+const MotionBoltIcon = motion.create(BoltIcon);
+const MotionLink = motion.create(Link);
 
 const Hero = () => {
   const iconRef = useRef(null);
