@@ -84,7 +84,8 @@ const SiteHeader = () => {
         <div className="flex items-center">
           <SearchCommand />
           <Link
-            href={""}
+            href={"https://github.com/TharushaRehan/shinyui"}
+            target="_blank"
             className={buttonVariants({ variant: "ghost", size: "icon" })}
           >
             <Icons.gitHub className="size-4" />

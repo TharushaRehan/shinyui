@@ -3,7 +3,7 @@
 import { RocketIcon } from "@radix-ui/react-icons";
 import { BoltIcon, ChevronRight } from "lucide-react";
 import Link from "next/link";
-import React, { useRef } from "react";
+import React from "react";
 import { buttonVariants } from "../ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -14,7 +14,7 @@ import {
 } from "../ui/tooltip";
 import { SiTypescript, SiTailwindcss, SiReact } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const technologies = [
   {
@@ -37,19 +37,18 @@ export const technologies = [
 
 const MotionBoltIcon = motion.create(BoltIcon);
 const MotionLink = motion.create(Link);
+const MotionTooltipTrigger = motion.create(TooltipTrigger);
 
 const Hero = () => {
-  const iconRef = useRef(null);
-  const iconIsView = useInView(iconRef);
-
   return (
     <section className="w-full flex flex-col h-[calc(100vh-100px)] items-center justify-center py-12 md:py-24 lg:py-32 bg-background">
       <div className="container px-4 md:px-6 flex flex-col items-center text-center space-y-6">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
           <div className="flex items-center justify-center gap-5">
             <MotionBoltIcon
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, ease: "easeIn" }}
               className="w-10 h-10 md:w-14 md:h-14 lg:w-20 lg:h-20"
             />
             <motion.span
@@ -60,8 +59,9 @@ const Hero = () => {
               Beautifully Designed Components
             </motion.span>
             <MotionBoltIcon
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 2, ease: "easeIn" }}
               className="w-10 h-10 md:w-14 md:h-14 lg:w-20 lg:h-20"
             />
           </div>
@@ -106,18 +106,44 @@ const Hero = () => {
             <ChevronRight className="w-4 h-4 ml-2 transition-all duration-300 ease-out group-hover:translate-x-1" />
           </MotionLink>
         </div>
-        <div className="flex gap-x-8">
+        <motion.div
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                delayChildren: 0.6,
+                staggerChildren: 0.3,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex gap-x-8"
+        >
           {technologies.map(({ name, icon }) => (
-            <TooltipProvider key={name}>
-              <Tooltip>
-                <TooltipTrigger>{icon}</TooltipTrigger>
-                <TooltipContent side="bottom">
-                  <p>{name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
+            <motion.div
+              key={name}
+              variants={{
+                hidden: { y: 20, opacity: 0 },
+                visible: {
+                  y: 0,
+                  opacity: 1,
+                },
+              }}
+            >
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>{icon}</TooltipTrigger>
+                  <TooltipContent side="bottom">
+                    <p>{name}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -22,7 +22,7 @@ export const docsConfig: DocsConfig = {
       title: "Pricing",
       href: "/pricing",
       //comingSoon: true,
-      //disabled: true,
+      disabled: true,
     },
   ],
 
