@@ -1,7 +1,6 @@
 import { siteConfig } from "@/config/site";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, cn } from "@/lib/utils";
-import { badgeVariants } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Mdx } from "@/components/mdx-component";
 import { DocPager } from "@/components/pager";
@@ -9,12 +8,11 @@ import { DocPager } from "@/components/pager";
 import "@/styles/mdx.css";
 
 import type { Metadata } from "next";
-import Link from "next/link";
+
 import { notFound } from "next/navigation";
-import { ChevronRightIcon, ExternalLinkIcon } from "lucide-react";
+import { ChevronRightIcon } from "lucide-react";
 import { allDocs } from "contentlayer/generated";
 
-//import { Contribute } from "@/components/contribute";
 import { TableOfContents } from "@/components/toc";
 
 interface DocPageProps {
@@ -109,32 +107,7 @@ export default async function DocPage({ params }: DocPageProps) {
             </p>
           )}
         </div>
-        {/* {doc.links ? (
-          <div className="flex items-center space-x-2 pt-4">
-            {doc.links?.doc && (
-              <Link
-                href={doc.links.doc}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                Docs
-                <ExternalLinkIcon className="size-3" />
-              </Link>
-            )}
-            {doc.links?.api && (
-              <Link
-                href={doc.links.api}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(badgeVariants({ variant: "secondary" }), "gap-1")}
-              >
-                API Reference
-                <ExternalLinkIcon className="size-3" />
-              </Link>
-            )}
-          </div>
-        ) : null} */}
+
         <div className="pb-12 pt-8">
           <Mdx code={doc.body.code} />
         </div>
