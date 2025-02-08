@@ -28,7 +28,7 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 
 export const Icons = {
   logo: ({ className, ...props }: { className: string }) => (
-    <img src="/icon1.png" alt="Shiny UI" className={className} {...props} />
+    <img src="/logo.svg" alt="Shiny UI" className={className} {...props} />
   ),
   close: X,
   spinner: Loader2,

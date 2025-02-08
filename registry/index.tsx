@@ -23,6 +23,11 @@ const ui: Registry = {
     type: "components:shinyui",
     files: ["registry/components/shinyui/marquee.tsx"],
   },
+  "floating-cursor": {
+    name: "floating-cursor",
+    type: "components:shinyui",
+    files: ["registry/components/shinyui/floating-cursor.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -56,6 +61,22 @@ const example: Registry = {
     files: ["registry/components/example/marquee-demo.tsx"],
     component: React.lazy(
       () => import("@/registry/components/example/marquee-demo")
+    ),
+  },
+  "marquee-vertical-demo": {
+    name: "marquee-vertical-demo",
+    type: "components:example",
+    files: ["registry/components/example/marquee-vertical-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/marquee-vertical-demo")
+    ),
+  },
+  "floating-cursor-demo": {
+    name: "floating-cursor-demo",
+    type: "components:example",
+    files: ["registry/components/example/floating-cursor-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/floating-cursor-demo")
     ),
   },
 };

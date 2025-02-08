@@ -21,7 +21,7 @@ export const docsConfig: DocsConfig = {
     {
       title: "Pricing",
       href: "/pricing",
-      //comingSoon: true,
+      comingSoon: false,
       disabled: true,
     },
   ],
@@ -49,7 +49,13 @@ export const docsConfig: DocsConfig = {
           title: "Marquee",
           href: "/docs/components/marquee",
           items: [],
-          addedDate: new Date("2024-09-18"),
+          addedDate: new Date("2025-02-05"),
+        },
+        {
+          title: "Floating Cursor",
+          href: "/docs/components/floating-cursor",
+          items: [],
+          addedDate: new Date("2025-02-05"),
         },
       ],
     },

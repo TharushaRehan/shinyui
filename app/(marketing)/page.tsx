@@ -8,7 +8,7 @@ const MarketingPage = () => {
     <>
       <Hero />
       <FeaturedComponents />
-      <Testimonials />
+      {/* <Testimonials /> */}
     </>
   );
 };

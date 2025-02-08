@@ -13,6 +13,7 @@ import posthog from "posthog-js";
 import { Icons } from "./icons";
 import { siteConfig } from "@/config/site";
 import SearchCommand from "./search-command";
+import Image from "next/image";
 
 const SiteHeader = () => {
   return (
@@ -29,7 +30,7 @@ const SiteHeader = () => {
               href="/"
               className="relative mr-6 flex items-center space-x-2"
             >
-              <Icons.logo className="size-6" />
+              <Icons.logo className="size-12" />
               <span className="hidden font-bold md:inline-block">
                 {siteConfig.name}
               </span>

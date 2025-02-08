@@ -1,74 +1,61 @@
-// src/components/Marquee.tsx
+"use client";
+
 import { cn } from "@/lib/utils";
-import { motion, useAnimation } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
+import React from "react";
 
 interface MarqueeProps {
-  /**
-   * Optional CSS class name to apply custom styles
-   */
   className?: string;
-  /**
-   * Whether to reverse the animation direction
-   * @default false
-   */
   reverse?: boolean;
-  /**
-   * Whether to pause the animation on hover
-   * @default false
-   */
-  pauseOnHover?: boolean;
-  /**
-   * Content to be displayed in the marquee
-   */
   children: React.ReactNode;
-  /**
-   * Whether to animate vertically instead of horizontally
-   * @default false
-   */
   vertical?: boolean;
-  /**
-   * Number of times to repeat the content
-   * @default 4
-   */
   repeat?: number;
+  duration?: number;
 }
 
 const Marquee: React.FC<MarqueeProps> = ({
   className,
   reverse = false,
-  pauseOnHover = false,
   children,
   vertical = false,
   repeat = 4,
+  duration = 20,
   ...props
 }) => {
+  const direction = reverse ? "-100%" : "100%";
+  const axis = vertical ? "translateY" : "translateX";
+
   return (
     <div
+      className={cn("flex overflow-hidden", {
+        "flex-row": !vertical,
+        "flex-col": vertical,
+      })}
       {...props}
-      className={cn(
-        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
-        {
-          "flex-row": !vertical,
-          "flex-col": vertical,
-        },
-        className
-      )}
     >
       {Array(repeat)
         .fill(0)
         .map((_, i) => (
-          <div
+          <motion.div
             key={i}
-            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
-              "animate-marquee flex-row": !vertical,
-              "animate-marquee-vertical flex-col": vertical,
-              "group-hover:[animation-play-state:paused]": pauseOnHover,
-              "[animation-direction:reverse]": reverse,
-            })}
+            initial={{ [axis]: 0 }}
+            animate={{ [axis]: direction }}
+            transition={{
+              duration,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            className={cn(
+              "flex flex-shrink-0",
+              {
+                "flex-row space-x-4 pr-4": !vertical,
+                "flex-col space-y-4 pb-4": vertical,
+              },
+              className
+            )}
           >
             {children}
-          </div>
+          </motion.div>
         ))}
     </div>
   );

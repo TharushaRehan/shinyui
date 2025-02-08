@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Marquee from "@/components/shinyui/marquee";
+import Marquee from "../shinyui/marquee";
 
 const reviews = [
   {
@@ -43,7 +43,7 @@ const reviews = [
 const firstRow = reviews.slice(0, reviews.length / 2);
 const secondRow = reviews.slice(reviews.length / 2);
 
-export const ReviewCard = ({
+const ReviewCard = ({
   img,
   name,
   username,
@@ -78,23 +78,23 @@ export const ReviewCard = ({
   );
 };
 
-const MarqueeDemo = () => {
+const MarqueeVerticalDemo = () => {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl space-y-4">
-      <Marquee repeat={4}>
+    <div className="relative flex h-[500px] w-full flex-row gap-x-10 items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+      <Marquee vertical>
         {firstRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <Marquee reverse>
+      <Marquee vertical reverse>
         {secondRow.map((review) => (
           <ReviewCard key={review.username} {...review} />
         ))}
       </Marquee>
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-white dark:from-background"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white dark:from-background"></div>
     </div>
   );
 };
 
-export default MarqueeDemo;
+export default MarqueeVerticalDemo;
