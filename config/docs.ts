@@ -60,6 +60,17 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: "Backgrounds",
+      items: [
+        {
+          title: "Dot Background",
+          href: "/docs/components/dot-background",
+          items: [],
+          addedDate: new Date("2025-02-11"),
+        },
+      ],
+    },
+    {
       title: "Text Animations",
       items: [
         {

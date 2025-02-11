@@ -13,7 +13,6 @@ import posthog from "posthog-js";
 import { Icons } from "./icons";
 import { siteConfig } from "@/config/site";
 import SearchCommand from "./search-command";
-import Image from "next/image";
 
 const SiteHeader = () => {
   return (
@@ -24,7 +23,7 @@ const SiteHeader = () => {
     >
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-10">
-          <div className="flex items-center gap-5">
+          <div className="flex items-center">
             <MobileNav />
             <Link
               href="/"
@@ -44,21 +43,13 @@ const SiteHeader = () => {
                   href={item.href}
                   className={cn(
                     buttonVariants({ variant: "link" }),
-                    "font-medium hover:no-underline hover:text-muted-foreground"
+                    "font-medium hover:no-underline hover:text-muted-foreground transition-all duration-300"
                   )}
                   target={item.external ? "_blank" : undefined}
                   onClick={() => item.event && posthog.capture(item.event)}
                 >
                   {item.title}
                   {item.external && <ExternalLink className="ml-2 size-4" />}
-                  {item.comingSoon && (
-                    <Badge
-                      className="mx-1 font-medium text-[11px]"
-                      variant={"comingSoon"}
-                    >
-                      Coming soon
-                    </Badge>
-                  )}
                 </Link>
               ) : (
                 <span
@@ -91,12 +82,12 @@ const SiteHeader = () => {
           >
             <Icons.gitHub className="size-4" />
           </Link>
-          <Link
+          {/* <Link
             href={""}
             className={buttonVariants({ variant: "ghost", size: "icon" })}
           >
             <Icons.discord className="size-4" />
-          </Link>
+          </Link> */}
           <ModeToggle />
         </div>
       </div>

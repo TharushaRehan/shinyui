@@ -3,15 +3,18 @@
 import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { useRouter } from "next/navigation";
-import { MenuIcon, SidebarOpen } from "lucide-react";
+import { ExternalLink, MenuIcon, SidebarOpen } from "lucide-react";
 
 import { docsConfig } from "@/config/docs";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Icons } from "@/components/icons";
+import { Badge } from "./ui/badge";
+import posthog from "posthog-js";
+import { hrtime } from "process";
 
 export function MobileNav() {
   const [open, setOpen] = React.useState(false);
@@ -28,28 +31,42 @@ export function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="pr-0">
-        <MobileLink
-          href="/"
-          className="flex items-center"
-          onOpenChange={setOpen}
-        >
-          <Icons.logo className="mr-2 size-4" />
+        <Link href="/" className="flex items-center">
+          <Icons.logo className="mr-2 size-12" />
           <span className="font-bold">{siteConfig.name}</span>
-        </MobileLink>
+        </Link>
         <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
           <div className="flex flex-col space-y-3">
-            {docsConfig.mainNav?.map(
-              (item) =>
-                item.href && (
-                  <MobileLink
-                    key={item.href}
-                    href={item.href}
-                    onOpenChange={setOpen}
-                  >
-                    {item.title}
-                  </MobileLink>
-                )
-            )}
+            {docsConfig.mainNav.map((item) => {
+              return item.href && !item.disabled ? (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  target={item.external ? "_blank" : undefined}
+                  onClick={() => item.event && posthog.capture(item.event)}
+                >
+                  {item.title}
+                  {item.external && <ExternalLink className="ml-2 size-4" />}
+                </Link>
+              ) : (
+                <span
+                  key={item.title}
+                  className={cn(
+                    "cursor-not-allowed opacity-60 hover:no-underline"
+                  )}
+                >
+                  {item.title}
+                  {item.comingSoon && (
+                    <Badge
+                      className="mx-1 font-medium text-[11px]"
+                      variant={"comingSoon"}
+                    >
+                      Coming soon
+                    </Badge>
+                  )}
+                </span>
+              );
+            })}
           </div>
           <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item, index) => (
@@ -57,11 +74,11 @@ export function MobileNav() {
                 <h4 className="font-medium">{item.title}</h4>
                 {item.items?.map((item) =>
                   !item.disabled && item.href ? (
-                    <MobileLink
+                    <Link
                       key={item.href}
                       href={item.href}
-                      onOpenChange={setOpen}
-                      // onClick={() => item.event && posthog.capture(item.event)}
+                      //onOpenChange={setOpen}
+                      onClick={() => item.event && posthog.capture(item.event)}
                       className={cn(
                         "text-muted-foreground",
                         item.disabled && "cursor-not-allowed opacity-60"
@@ -73,7 +90,7 @@ export function MobileNav() {
                           {item.label}
                         </span>
                       )}
-                    </MobileLink>
+                    </Link>
                   ) : (
                     <span
                       key={index}
@@ -97,34 +114,5 @@ export function MobileNav() {
         </ScrollArea>
       </SheetContent>
     </Sheet>
-  );
-}
-
-interface MobileLinkProps extends LinkProps {
-  onOpenChange?: (open: boolean) => void;
-  children: React.ReactNode;
-  className?: string;
-}
-
-function MobileLink({
-  href,
-  onOpenChange,
-  className,
-  children,
-  ...props
-}: MobileLinkProps) {
-  const router = useRouter();
-  return (
-    <Link
-      href={href}
-      onClick={() => {
-        router.push(href.toString());
-        onOpenChange?.(false);
-      }}
-      className={cn(className)}
-      {...props}
-    >
-      {children}
-    </Link>
   );
 }

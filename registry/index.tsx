@@ -28,6 +28,11 @@ const ui: Registry = {
     type: "components:shinyui",
     files: ["registry/components/shinyui/floating-cursor.tsx"],
   },
+  // "dot-background": {
+  //   name: "dot-background",
+  //   type: "components:shinyui",
+  //   files: ["registry/components/shinyui/dot-background.tsx"],
+  // },
 };
 
 const example: Registry = {
@@ -79,6 +84,14 @@ const example: Registry = {
       () => import("@/registry/components/example/floating-cursor-demo")
     ),
   },
+  // "dot-background-demo": {
+  //   name: "dot-background-demo",
+  //   type: "components:example",
+  //   files: ["registry/components/example/dot-background-demo.tsx"],
+  //   component: React.lazy(
+  //     () => import("@/registry/components/example/dot-background-demo")
+  //   ),
+  // },
 };
 
 export const registry: Registry = {

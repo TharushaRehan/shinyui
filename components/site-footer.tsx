@@ -20,21 +20,21 @@ const SiteFooter = () => {
             Documentation
           </Link>
           <Link
-            href="#"
+            href="https://github.com/TharushaRehan/shinyui"
             className={buttonVariants({ variant: "link" })}
             prefetch={false}
           >
             GitHub
           </Link>
-          <Link
+          {/* <Link
             href="#"
             className={buttonVariants({ variant: "link" })}
             prefetch={false}
           >
             Twitter
-          </Link>
+          </Link> */}
           <Link
-            href="#"
+            href="https://www.linkedin.com/in/tharusha-perera/"
             className={buttonVariants({ variant: "link" })}
             prefetch={false}
           >
