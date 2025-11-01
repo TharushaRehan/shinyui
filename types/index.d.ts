@@ -80,3 +80,8 @@ export interface PricingCard {
   buttonClassName?: string;
   highlight?: boolean;
 }
+
+export interface Codeblock {
+  title: string;
+  pathname: string;
+}

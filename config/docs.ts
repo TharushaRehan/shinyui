@@ -12,18 +12,22 @@ export const docsConfig: DocsConfig = {
       href: "/docs",
     },
     {
+      title: "Code Blocks",
+      href: "/codeblocks",
+    },
+    {
       title: "Templates",
       href: "/templates",
       comingSoon: true,
       disabled: true,
       paid: true,
     },
-    {
-      title: "Pricing",
-      href: "/pricing",
-      comingSoon: false,
-      disabled: true,
-    },
+    // {
+    //   title: "Pricing",
+    //   href: "/pricing",
+    //   comingSoon: false,
+    //   disabled: true,
+    // },
   ],
 
   sidebarNav: [
@@ -56,6 +60,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/floating-cursor",
           items: [],
           addedDate: new Date("2025-02-05"),
+        },
+        {
+          title: "Image Swiper",
+          href: "/docs/components/image-swiper",
+          addedDate: new Date("2025-02-20"),
         },
       ],
     },
