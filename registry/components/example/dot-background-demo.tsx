@@ -1,5 +1,5 @@
 import React from "react";
-import DotBackground from "../shinyui/dot-background";
+import DotBackground from "@/components/shinyui/dot-background";
 
 const DotBackgroundDemo = () => {
   return (

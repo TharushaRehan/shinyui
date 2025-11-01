@@ -1,5 +1,5 @@
 import React from "react";
-import FloatingCursor from "../shinyui/floating-cursor";
+import FloatingCursor from "@/components/shinyui/floating-cursor";
 
 const FloatingCursorDemo = () => {
   return <FloatingCursor text="Tharusha" />;

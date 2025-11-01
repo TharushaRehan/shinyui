@@ -33,6 +33,11 @@ const ui: Registry = {
   //   type: "components:shinyui",
   //   files: ["registry/components/shinyui/dot-background.tsx"],
   // },
+  "image-swiper": {
+    name: "image-swiper",
+    type: "components:shinyui",
+    files: ["registry/components/shinyui/image-swiper.tsx"],
+  },
 };
 
 const example: Registry = {
@@ -92,6 +97,14 @@ const example: Registry = {
   //     () => import("@/registry/components/example/dot-background-demo")
   //   ),
   // },
+  "image-swiper-demo": {
+    name: "image-swiper-demo",
+    type: "components:example",
+    files: ["registry/components/example/image-swiper-demo.tsx"],
+    component: React.lazy(
+      () => import("@/registry/components/example/image-swiper-demo")
+    ),
+  },
 };
 
 export const registry: Registry = {

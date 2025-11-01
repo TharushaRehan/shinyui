@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import Marquee from "../shinyui/marquee";
+import Marquee from "@/components/shinyui/marquee";
 
 const reviews = [
   {

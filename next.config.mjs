@@ -11,7 +11,20 @@ const nextConfig = {
         destination: "/docs/introduction",
         permanent: true,
       },
+      {
+        source: "/codeblocks",
+        destination: "/codeblocks/hero-section",
+        permanent: true,
+      },
     ];
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
 };
 
